@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "anchor": "^1.4.1"
+  }
+}

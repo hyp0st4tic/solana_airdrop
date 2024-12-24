@@ -1,0 +1,62 @@
+body{
+    background-color: #F5F2FF;
+    background-position: center;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    color: #3C315B;
+}
+
+h1 {
+    color: #3C315B;
+}
+
+#connect-wallet {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+}
+
+.connect-button{
+    border-radius: 50px;
+    background: #AB9FF2;
+    transition: ease-in-out;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+.connect-button:hover{
+    background: #3C315B;
+}
+
+#wallet-info {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.logo{
+width: 40%;
+padding-left: 10px;
+}
+
+.mainAsset{
+    width: 80%;
+    padding-top: 40px;
+}
+
+.firstTitle{
+    margin-top: 50px;
+    font-size: large;
+}
+
+h3{
+    font-size: 11px;
+}
+
+.mainContent{
+    margin-top: 60px;
+}
