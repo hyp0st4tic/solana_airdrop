@@ -1,11 +1,19 @@
 body{
-    background-color: #F5F2FF;
-    background-position: center;
+    background: rgb(255,162,249);
+    background: linear-gradient(100deg, rgba(255,162,249,1) 0%, rgba(145,234,237,1) 35%, rgba(232,206,255,1) 100%); 
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin-top: 50px;
-    color: #3C315B;
+    color: white;
 }
+
+html{
+    scroll-behavior: smooth;
+  }
+  
+  html:nth-child(1){
+    cursor: url("cursor64.png"), auto;
+  }
 
 h1 {
     color: #3C315B;
@@ -38,25 +46,152 @@ h1 {
     color: #333;
 }
 
-.logo{
-width: 40%;
-padding-left: 10px;
-}
-
-.mainAsset{
-    width: 80%;
-    padding-top: 40px;
-}
-
 .firstTitle{
-    margin-top: 50px;
+    margin-top: 20px;
     font-size: large;
+    color: #3C315B;
 }
 
 h3{
     font-size: 11px;
+    color: #3C315B;
 }
 
-.mainContent{
-    margin-top: 60px;
+
+.airdropCard{
+    background-color: rgba(128, 128, 128, 0.219);
+    padding: 50px 175px;
+    margin-left: 1100px;
+    border-radius: 50px;
+    position: absolute;
+    margin-top: 280px;
+}
+
+.menu {
+    font-family: "Londrina Solid", serif;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   background-color: transparent;
+   list-style-type: none;
+   text-decoration: none;
+   font-size: 40px;
+   opacity: 100%;
+   background: rgba(128, 128, 128, 0.212);
+   margin-left: 70px;
+   margin-right: 70px;
+   border-radius: 50px;
+   padding: 50px;
+}
+
+li {
+    padding: 0px 130px;
+}
+
+a:hover{
+    color: pink;
+}
+
+a {
+    color: white;
+}
+
+.cgnylogo{
+    width: 100px;
+    position: absolute;
+    display: flex;
+    margin-left: 100px;
+    margin-top: 25px;
+    border-right: solid 1px white;
+    padding-right: 30px;
+}
+
+#wrapper {
+    position: absolute;
+    font-family: "Londrina Solid", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(128, 128, 128, 0.212);
+    backdrop-filter: blur(8px);
+    margin-left: 100px;
+    border-radius: 30px;
+    padding: 40px;
+}
+
+#title {
+    font-family: "Londrina Solid", serif;
+    font-size: 60px;
+    color: rgb(252, 126, 147);
+}
+
+#minuteur {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 25px;
+    margin: 10vh auto;
+}
+
+.box {
+    height: 200px;
+    text-align: center;
+    background-color: #1b1b1b7e;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box > div:first-child {
+    font-size: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+}
+
+.unite {
+    margin: 10px 0px;
+    background-color: #1b1b1b7e;
+    font-size: 20px;
+}
+
+.cardTime{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.cgny{
+    z-index: 1;
+    display: flex;
+    width: 15%;
+    position: absolute;
+    margin-top: 210px;
+    margin-left: 780px;
+}
+
+.advertCard{
+    font-family: "Londrina Solid", serif;
+    position: absolute;
+    background: rgba(128, 128, 128, 0.219);
+    padding: 10px 100px;
+    margin-right: 100px;
+    border-radius: 50px;
+    margin-left: 1100px;
+
+}
+
+.firstTitle2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    font-size: 16.4px;
+}
+
+.announce{
+    color: rgb(252, 126, 147);
+    font-size: 50px;
 }
